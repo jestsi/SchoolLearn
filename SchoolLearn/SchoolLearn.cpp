@@ -1,5 +1,7 @@
 ﻿#include "SchoolLearn.h"
 
+// Работа над 4 задание в 34 школы Автор Гуц Максим
+
 int main()
 {
 	std::string inputValue;
