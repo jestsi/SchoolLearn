@@ -1,6 +1,6 @@
 ﻿#include "SchoolLearn.h"
 
-// Работа над 4 задание в 34 школы Автор Гуц Максим
+// Работа над 4 заданием в 34 школе Автор Гуц Максим
 
 void FirstVariant() {
 	std::string inputValue;
@@ -40,19 +40,16 @@ void FirstVariant() {
 
 #include <regex>
 
-bool SecondVariant(std::string str) {
+bool SecondVariant() {
+	std::cout << std::endl << "#:";
+	std::string str;
+	std::cin >> str;
 	static const std::regex r(R"([0-9]?[a-z|A-Z]{3}[0-9]?[0-9])"); // ([0-9]?[a-z|A-Z]?[a-z|A-Z]?[a-z|A-Z]?[0-9]?[0-9])
 	return std::regex_match(str.data(), r);
 }
 
 int main()
 {
-	ln:
-	std::string test;
-	std::cin >> test;
-	
-	std::cout << (bool)SecondVariant(test);
-	goto ln;
-
+	std::cout << (SecondVariant() ? "True" : "False");
 	return 0;
 }
