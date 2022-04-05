@@ -5,5 +5,6 @@
 
 #include <iostream>
 #include <string>
+#include <regex>
 
 // TODO: установите здесь ссылки на дополнительные заголовки, требующиеся для программы.

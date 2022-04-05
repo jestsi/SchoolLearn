@@ -7,28 +7,21 @@ void FirstVariant() {
 	std::cout << "Напишите номер автомобиля: ";
 	std::cin >> inputValue;
 
-	setlocale(LC_ALL, "ru");
 
 	if (inputValue.length() != 8 && inputValue.length() != 9) {
 		std::cerr << "Кол-во символов не подходит под кол-во номерного знака" << std::endl;
 		return;
 	}
 
-	std::string alhpaChars, digitChars;
+	std::string exitsChars;
 
 	for (size_t i = 0; i < inputValue.length(); i++)
 	{
-		if (isalpha(inputValue[i])) {
-			alhpaChars += inputValue[i];
-			continue;
-		}
-		if (isdigit(inputValue[i])) {
-			alhpaChars += inputValue[i];
-			continue;
-		}
+		if (isalpha(inputValue[i]) || isdigit(inputValue[i])) 
+			exitsChars += inputValue[i];
 	}
 
-	if (alhpaChars.length() + digitChars.length() == inputValue.length()) {
+	if (exitsChars.length() == inputValue.length()) {
 		std::cout << "Да это автомобильный номер!" << std::endl;
 		return;
 	}
@@ -38,18 +31,21 @@ void FirstVariant() {
 	}
 }
 
-#include <regex>
+
 
 bool SecondVariant() {
 	std::cout << std::endl << "#:";
 	std::string str;
 	std::cin >> str;
-	static const std::regex r(R"([0-9]?[a-z|A-Z]{3}[0-9]?[0-9])"); // ([0-9]?[a-z|A-Z]?[a-z|A-Z]?[a-z|A-Z]?[0-9]?[0-9])
-	return std::regex_match(str.data(), r);
+	// выше получаем строку для проверки 
+	static const std::regex r(R"([0-9]?[a-z|A-Z]{3}[0-9]?[0-9])"); // создаем регулярное выражение
+	return std::regex_match(str.data(), r); // проверяем строку на совпадение с шаблоном
 }
 
 int main()
 {
+	setlocale(LC_ALL, "ru");
+
 	std::cout << (SecondVariant() ? "True" : "False");
 	return 0;
 }
