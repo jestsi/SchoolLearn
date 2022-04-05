@@ -2,8 +2,7 @@
 
 // Работа над 4 задание в 34 школы Автор Гуц Максим
 
-int main()
-{
+void FirstVariant() {
 	std::string inputValue;
 	std::cout << "Напишите номер автомобиля: ";
 	std::cin >> inputValue;
@@ -12,7 +11,7 @@ int main()
 
 	if (inputValue.length() != 8 && inputValue.length() != 9) {
 		std::cerr << "Кол-во символов не подходит под кол-во номерного знака" << std::endl;
-		return 1;
+		return;
 	}
 
 	std::string alhpaChars, digitChars;
@@ -31,13 +30,29 @@ int main()
 
 	if (alhpaChars.length() + digitChars.length() == inputValue.length()) {
 		std::cout << "Да это автомобильный номер!" << std::endl;
-		return 0;
+		return;
 	}
 	else {
 		std::cout << "Нет это не автомобильный номер!" << std::endl;
-		return 0;
+		return;
 	}
+}
 
+#include <regex>
+
+bool SecondVariant(std::string str) {
+	static const std::regex r(R"([0-9]?[a-z|A-Z]{3}[0-9]?[0-9])"); // ([0-9]?[a-z|A-Z]?[a-z|A-Z]?[a-z|A-Z]?[0-9]?[0-9])
+	return std::regex_match(str.data(), r);
+}
+
+int main()
+{
+	ln:
+	std::string test;
+	std::cin >> test;
+	
+	std::cout << (bool)SecondVariant(test);
+	goto ln;
 
 	return 0;
 }
