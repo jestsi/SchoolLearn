@@ -2,6 +2,8 @@
 
 // Работа над 4 заданием в 34 школе Автор Гуц Максим
 
+
+
 void FirstVariant() {
 	std::string inputValue;
 	std::cout << "Напишите номер автомобиля: ";
@@ -38,14 +40,17 @@ bool SecondVariant() {
 	std::string str;
 	std::cin >> str;
 	// выше получаем строку для проверки 
-	static const std::regex r(R"([0-9]?[a-z|A-Z]{3}[0-9]?[0-9])"); // создаем регулярное выражение
+	static const std::regex r(R"([A-Za-zА-Яа-я]\d{3}[A-Za-zА-Яа-я]{2}\d{2}[0-9]?)"); // создаем регулярное выражение
 	return std::regex_match(str.data(), r); // проверяем строку на совпадение с шаблоном
 }
 
 int main()
 {
-	setlocale(LC_ALL, "ru");
-
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	setlocale(LC_ALL, "Russian");
+ls:
 	std::cout << (SecondVariant() ? "True" : "False");
+goto ls;
 	return 0;
 }
