@@ -2,8 +2,6 @@
 
 // Работа над 4 заданием в 34 школе Автор Гуц Максим
 
-
-
 void FirstVariant() {
 	std::string inputValue;
 	std::cout << "Напишите номер автомобиля: ";
@@ -15,15 +13,15 @@ void FirstVariant() {
 		return;
 	}
 
-	std::string exitsChars;
+	int exitsChars = {};
 
 	for (size_t i = 0; i < inputValue.length(); i++)
 	{
-		if (isalpha(inputValue[i]) || isdigit(inputValue[i])) 
-			exitsChars += inputValue[i];
+		if (isalpha(inputValue[i]) || isdigit(inputValue[i]))
+			exitsChars++;
 	}
 
-	if (exitsChars.length() == inputValue.length()) {
+	if (exitsChars == inputValue.length()) {
 		std::cout << "Да это автомобильный номер!" << std::endl;
 		return;
 	}
@@ -37,17 +35,17 @@ void FirstVariant() {
 
 bool SecondVariant() {
 	std::cout << std::endl << "#:";
-	std::string str;
-	std::cin >> str;
+	std::wstring str;
+	std::wcin >> str;
 	// выше получаем строку для проверки 
-	static const std::regex r(R"([A-Za-zА-Яа-я]\d{3}[A-Za-zА-Яа-я]{2}\d{2}[0-9]?)"); // создаем регулярное выражение
-	return std::regex_match(str.data(), r); // проверяем строку на совпадение с шаблоном
+	static const std::wregex r(LR"([A-Za-zА-Яа-я]\d{3}[A-Za-zА-Яа-я]{2}\d{2}[0-9]?)"); // создаем регулярное выражение
+	return std::regex_match(str, r); // проверяем строку на совпадение с шаблоном
 }
+
 
 int main()
 {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	
 	setlocale(LC_ALL, "Russian");
 ls:
 	std::cout << (SecondVariant() ? "True" : "False");

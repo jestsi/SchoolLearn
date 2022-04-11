@@ -6,6 +6,5 @@
 #include <iostream>
 #include <string>
 #include <regex>
-#include <windows.h>
 
 // TODO: установите здесь ссылки на дополнительные заголовки, требующиеся для программы.
